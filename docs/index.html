@@ -3,58 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Website </title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; 
-    
-        }
-        h1 {
-            color: #3d5168;
-        }
-        a {
-            text-decoration: none;
-            color: #2d3b49;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ul {
-            list-style-type: none; 
-            padding: 0; 
-            margin: 0; 
-            display: inline-block; 
-        }
-        li {
-            margin: 10px 0; 
-        }
-    </style>
+    <meta name="description" content="Portfolio of Chaman Sinha, showcasing projects, skills, and contact information.">
+    <title>Chaman Sinha's Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- CSS file link -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Added CSS libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Added JavaScript libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
 </head>
 <body>
+    <div id="particles-js"></div>
     <div class="container">
-        <h1>Welcome</h1>
-        <p>Im Still Building this..</p>
-        <p>Explore my projects below:</p>
-        <ul>
-            <li><a href="https://kvr-10.github.io/University-Management-System/" target="_blank">University Management System</a></li>
-            <li><a href="https://kvr-10.github.io/Breaking-Ball-Game/" target="_blank">Breaking Ball Game</a></li>
-            <li><a href="https://kvr-10.github.io/Quiz-Application/" target="_blank">Quiz Application</a></li>            
-        </ul>
+        <header class="header">
+            <h1>Chaman Sinha</h1>
+            <div id="typed-text" class="typed-text"></div>
+        </header>
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <section class="profile-section">
+            <div class="profile-picture-container">
+                <img src="profile-picture.jpg" alt="Profile Picture" class="profile-picture">
+            </div>
+        </section>
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>Hi I'm Chaman Sinha, a third-year Computer Engineering student with a CGPA of 9.28, passionate about Java development and technology. I am skilled in various programming languages and tools, and I am continuously improving my technical expertise through projects and certifications.</p>
+            <p>Currently, I am focusing on enhancing my skills in Java, MySQL, the Spring Boot framework, and web development, while also pursuing certifications to further validate my knowledge. My academic journey and hands-on experience in various projects have equipped me with a strong foundation in software development, and I am eager to contribute to meaningful projects and opportunities.</p>
+        
+            <h3>Skills and Expertise</h3>
+            <ul>
+                <li><strong>Programming Languages:</strong> Java, C++</li>
+                <li><strong>Web Technologies:</strong> HTML, CSS</li>
+                <li><strong>Database Management:</strong> MySQL</li>
+                <li><strong>Version Control:</strong> Git</li>
+                <li><strong>IDE:</strong> VSCode, IntelliJ IDEA</li>
+                <li><strong>Soft Skills:</strong> Problem-solving, Analytical thinking, Team collaboration</li>
+            </ul>
+
+            <div class="resume-download">
+                <a href="Chaman_Sinha_Resume.pdf" download="Chaman_Sinha_Resume.pdf" class="button">Download Resume</a>
+            </div>
+        </section>
+        </section>
+        
+        
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <img src="ums-project.png" alt="University Management System">
+                <div class="details">
+                    <h3>University Management System</h3>
+                    <p>Java-based application with GUI using Swing and database integration with MySQL.</p>
+                    <a href="https://kvr-10.github.io/University-Management-System/" target="_blank" class="button">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="quiz-app.png" alt="Quiz Application">
+                <div class="details">
+                    <h3>Quiz Application</h3>
+                    <p>Java-based quiz application with features for login, quiz participation, and score display.</p>
+                    <a href="https://kvr-10.github.io/Quiz-Application/" target="_blank" class="button">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="breaking-ball.png" alt="Breaking Ball Game">
+                <div class="details">
+                    <h3>Breaking Ball Game</h3>
+                    <p>Java-based Breakout-style game with scoring system and increasing difficulty.</p>
+                    <a href="https://kvr-10.github.io/Breaking-Ball-Game/" target="_blank" class="button">View Project</a>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <p>You can reach me at the following:</p>
+            <div class="social-icons">
+                <a href="mailto:Chamansinha9480@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/chaman-sinha" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/kvr-10" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
+            </div>
+        </section>
+        <footer class="footer">
+            <p>&copy; 2024 Chaman Sinha</p>
+            
+        </footer>
     </div>
+    <script src="script.js"></script>
+    <script>
+        
+        var options = {
+    strings: ["Java Developer", "Web Developer", "Game Developer"],
+    typeSpeed: 75,
+    backSpeed: 25,
+    backDelay: 1000,
+    startDelay: 500,
+    loop: true,
+    showCursor: false,
+    cursorChar: '|', 
+        };
+var typed = new Typed('#typed-text', options);
+
+    </script>
 </body>
 </html>
