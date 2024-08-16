@@ -1,4 +1,6 @@
-![QR Code](kvr-10/docs/qr-code.png)
+## My Portfolio
+
+<img src="docs/qr-code.png" alt="QR Code" width="150" />
 
 Scan this QR code to visit my online portfolio!
 
