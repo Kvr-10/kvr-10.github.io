@@ -63,7 +63,7 @@ nav a:hover {
     border-radius: 10px;
 }
 
-.profile-section {
+/* .profile-section {
     text-align: center;
     margin-top: 20px;
 }
@@ -73,7 +73,7 @@ nav a:hover {
 }
 
 .profile-section img {
-    width: 140px;
+    width: 100px;
     height: 150px;
     border-radius: 50%;
     border: 1px solid #000205;
@@ -83,7 +83,58 @@ nav a:hover {
 .profile-section img:hover {
     transform: scale(1.05);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} */
+
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
+
+.profile-picture-container {
+    position: relative;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%; 
+    border-radius: 70%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-picture-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.profile-picture-container:hover .profile-picture {
+    transform: scale(1.05);
+}
+
+#monkey {
+    position: absolute;
+    bottom: 250px; /* Adjust this value to lift the monkey higher */
+    left: 0;
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+}
+
+
+#monkey img {
+    width: 100%;
+    height: auto;
+}
+
+
 
 .about {
     background-color: #c5f2f7;
