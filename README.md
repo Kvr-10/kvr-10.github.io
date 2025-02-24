@@ -10,3 +10,4 @@ For more information, check out the following links:
 - [University Management System](https://kvr-10.github.io/University-Management-System/)
 - [Quiz Application](https://kvr-10.github.io/Quiz-Application/)
 - [Breaking Ball Game](https://kvr-10.github.io/Breaking-Ball-Game/)
+- [Sorting algorithm Visualization](https://kvr-10.github.io/Sorting-Algorithms/)
