@@ -67,40 +67,18 @@
             </div>
         </section>
         </section>
-
-
-        <!-- <div id="monkey">
-            <img src="monkey.gif" alt="Hopping Monkey">
-        </div> -->
-        
-        <!-- <script src="script.js"></script> Link external JS file
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                let monkey = document.getElementById("monkey");
-                let position = 10;
-                let direction = 1; // 1 for right, -1 for left
-                let maxWidth = window.innerWidth - 100; // Adjust for the width of the monkey
-        
-                function moveMonkey() {
-                    position += direction * 5; // Change 5 to adjust speed
-        
-                    // Reverse direction when hitting screen edges
-                    if (position >= maxWidth || position <= 0) {
-                        direction *= -1;
-                        monkey.style.transform = direction === 1 ? "scaleX(1)" : "scaleX(-1)";
-                    }
-        
-                    monkey.style.left = position + "px";
-                }
-        
-                setInterval(moveMonkey, 50); // Adjust speed by changing interval time
-            });
-        </script> -->
-                
-        
-        
+   
         <section id="projects" class="projects">
             <h2>Projects</h2>
+            <div class="project-card">
+                <img src="ai-email-assistant.png" alt="AI Email Assistant">
+                <div class="details">
+                    <h3>AI Email Assistant</h3>
+                    <p>Full-stack AI-powered email reply generator with Google Mail extension integration, built with Spring Boot backend and React + Vite frontend.</p>
+                    <a href="https://kvr-10.github.io/AiEmail-Assistant/" target="_blank" class="button">View Project</a>
+                    <a href="https://www.youtube.com/watch?v=GhceCjThWqo" target="_blank" class="button">Watch Demo</a>
+                </div>
+            </div>
             <div class="project-card">
                 <img src="employee-management.png" alt="Employee Management System">
                 <div class="details">
