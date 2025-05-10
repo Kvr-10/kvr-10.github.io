@@ -3,160 +3,811 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio of Chaman Sinha, showcasing projects, skills, and contact information.">
-    <title>Chaman Sinha's Portfolio</title>
-    
-    <link rel="icon" href="portfolio.png" type="image/x-icon">
-    
-    <link rel="stylesheet" href="styles.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9B5M1T8N72"></script>
+    <title>Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        dark: '#111827',
+                        darker: '#0F172A',
+                        light: '#F9FAFB',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3B82F6, #10B981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .active::after {
+            width: 100%;
+        }
+        body {
+            background-color: #111827;
+            color: #E5E7EB;
+        }
+        .section-bg {
+            background-color: #1F2937;
+        }
+        .card-bg {
+            background-color: #1F2937;
+            border: 1px solid #374151;
+        }
+        .skill-bg {
+            background-color: #111827;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900 shadow-md z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-white">Chaman<span class="text-primary">Sinha</span></span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link active text-white font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-white font-medium">About</a>
+                    <a href="#skills" class="nav-link text-gray-300 hover:text-white font-medium">Skills</a>
+                    <a href="#projects" class="nav-link text-gray-300 hover:text-white font-medium">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-white font-medium">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 pb-3 px-4 border-t border-gray-800">
+            <a href="#home" class="block py-2 text-white font-medium">Home</a>
+            <a href="#about" class="block py-2 text-gray-300 hover:text-white font-medium">About</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-white font-medium">Skills</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-white font-medium">Projects</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-white font-medium">Contact</a>
+        </div>
+    </nav>
 
-    gtag('config', 'G-9B5M1T8N72');
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Hi, I'm <span class="gradient-text">Chaman Sinha</span></h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">Full Stack Developer</h2>
+                   <p class="text-gray-300 mb-8 text-lg">I build full-stack Java applications with Spring Boot and React, creating scalable, data-driven solutions with real-world impact.</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">Contact Me</a>
+                        <a href="resume/Chaman_Sinha_Resume.pdf" class="border border-primary text-primary hover:bg-blue-900/30 px-6 py-3 rounded-lg font-medium transition duration-300">Download CV</a>
+                    </div>
+                </div>
+             <div class="hidden md:block md:w-2/5 mt-10 md:mt-0 animate-fade-in">
+                    <div class="relative">
+                        <div class="absolute -top-3 -left-3 w-full h-full border-4 border-primary rounded-lg z-0"></div>
+                        <img src="images/myphoto.jpg" 
+                             alt="Profile" class="relative z-10 w-full h-auto rounded-lg shadow-xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 section-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-white mb-12">About <span class="gradient-text">Me</span></h2>
+            <div class="md:flex items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <img src="images/myphoto.jpg" 
+                             alt="About" class="w-64 h-64 object-cover rounded-full shadow-lg border-4 border-primary">
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold text-white mb-4">Who am I?</h3>
+                <p class="text-gray-300 mb-6 text-lg">
+                    I'm a full-stack Java developer with a passion for building efficient, scalable web applications using Spring Boot and React. 
+                    Pursuing a B.Tech in Computer Engineering, I’ve developed real-world solutions including AI-based tools and management systems, 
+                    combining strong backend logic with clean, responsive user interfaces.
+                </p>
+              <p class="text-gray-300 mb-6 text-lg">
+                What sets me apart is my ability to bridge the gap between backend technologies like Java and Spring Boot, and dynamic frontend frameworks like React, crafting seamless, full-stack applications that deliver tangible business value.
+             </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="card-bg p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-primary p-2 rounded-full mr-4">
+                                    <i class="fas fa-rocket text-white"></i>
+                                </div>
+                                <h4 class="font-semibold text-white">Future Goals</h4>
+                            </div>
+                            <p class="text-gray-300">Aiming to contribute to innovative product teams as a full-stack developer, build scalable cloud-based systems, and continuously sharpen my expertise in Java, Spring, and modern frontend frameworks.</p>
+                        </div>
+                        <div class="card-bg p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-primary p-2 rounded-full mr-4">
+                                    <i class="fas fa-project-diagram text-white"></i>
+                                </div>
+                                <h4 class="font-semibold text-white">Projects</h4>
+                            </div>
+                            <p class="text-gray-300">5+ completed projects, including one with registered copyright.</p>
+                        </div>
+                        <div class="card-bg p-6 rounded-lg">
+                            <div class="flex items-center mb-3">
+                                <div class="bg-primary p-2 rounded-full mr-4">
+                                    <i class="fas fa-cogs text-white"></i>
+                                </div>
+                                <h4 class="font-semibold text-white">Core Strengths</h4>
+                            </div>
+                            <p class="text-gray-300">Problem-solving, clean code practices, rapid learning, and the ability to translate complex requirements into fully functional applications using Java, Spring Boot, and React.</p>
+                        </div>
+                      <div class="card-bg p-6 rounded-lg">
+                        <div class="flex items-center mb-3">
+                            <div class="bg-primary p-2 rounded-full mr-4">
+                                <i class="fas fa-award text-white"></i>
+                            </div>
+                            <h4 class="font-semibold text-white">Certifications</h4>
+                        </div>
+                        <p class="text-gray-300">5+ industry-recognized certifications, including Java (IIT Kharagpur), Front-End Development (Meta), and Generative AI (AWS, DeepLearning.AI).</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Info & Education -->
+    <section class="py-16 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Personal Information -->
+                <div class="card-bg p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-bold text-white mb-6 pb-2 border-b-2 border-primary inline-block">Personal Information</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-user text-primary mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-300">Full Name</h4>
+                                <p class="text-gray-400">Chaman Sinha</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-300">Email</h4>
+                                <p class="text-gray-400">chamansinha9480@gmail.com</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-primary mr-4 mt-1"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-300">Location</h4>
+                                <p class="text-gray-400">Pune, Maharastra</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8">
+                        <h4 class="font-medium text-gray-300 mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                               <a href="https://github.com/kvr-10" class="bg-gray-800 p-3 rounded-full text-gray-300 hover:bg-indigo-600 hover:text-white transition duration-300">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/chaman-sinha/" class="bg-gray-800 p-3 rounded-full text-gray-300 hover:bg-indigo-600 hover:text-white transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://leetcode.com/u/Chamansinha/" class="bg-gray-800 p-3 rounded-full text-gray-300 hover:bg-indigo-600 hover:text-white transition duration-300">
+                                <i class="fas fa-code"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- Education -->
+                <div class="card-bg p-8 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-bold text-white mb-6 pb-2 border-b-2 border-primary inline-block">Education</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-primary pl-4">
+                            <h4 class="font-bold text-white">B.tech in Computer Engineering</h4>
+                            <p class="text-primary font-medium">Bharati Vidyapeeth </p>
+                            <p class="text-primary font-medium">College Of Engineering, Pune Maharashtra | 2022 - 2026</p>
+                            <p class="text-gray-400 mt-2">Specialized in Full-Stack Development</p>
+
+                        </div>
+                        <!-- <div class="border-l-4 border-primary pl-4">
+                            <h4 class="font-bold text-white">B.Sc. in Computer Engineering</h4>
+                            <p class="text-primary font-medium">State University | 2014 - 2018</p>
+                            <p class="text-gray-400 mt-2">Minor in Mathematics</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+<section id="skills" class="py-16 section-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-white mb-12">My <span class="gradient-text">Skills</span></h2>
+        
+        <!-- Programming Languages -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Programming Languages
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-c-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">C</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-cplusplus-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">C++</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-java-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Java</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-javascript-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">JavaScript</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Frontend Development -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Frontend Development
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-html5-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">HTML5</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-css3-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">CSS3</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-bootstrap-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Bootstrap</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-react-original text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">React.js</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-nextjs-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Next.js</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-tailwindcss-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Tailwind CSS</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Backend Development -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Backend Development
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-nodejs-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Node.js</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-spring-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Spring Boot</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile App Development -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Mobile App Development
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-android-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Android</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Database -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Database
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-mongodb-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">MongoDB</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-mysql-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">MySQL</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DevOps & Cloud -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                DevOps & Cloud
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-amazonwebservices-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">AWS</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-docker-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Docker</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-googlecloud-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Google Cloud</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-jenkins-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Jenkins</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-git-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Git</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testing -->
+        <div class="mb-12">
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Testing
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-selenium-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Selenium</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-postman-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Postman</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Design & Others -->
+        <div>
+            <h3 class="text-xl font-semibold text-white mb-6 flex items-center">
+                <span class="bg-primary w-3 h-3 rounded-full mr-2"></span>
+                Design & Others
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-figma-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Figma</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-photoshop-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Photoshop</span>
+                </div>
+                <div class="flex flex-col items-center p-4 skill-bg rounded-lg border border-gray-700">
+                    <i class="devicon-linux-plain text-4xl text-primary mb-2"></i>
+                    <span class="font-medium text-gray-300">Linux</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-16 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-white mb-4">Featured <span class="gradient-text">Projects</span></h2>
+        <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Here are some of my recent projects with live demos and source code available</p>
+        
+        <!-- Changed lg:grid-cols-3 to lg:grid-cols-2 for 2 columns on large screens -->
+        <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Project 1 (Visible by default) -->
+            <div class="project-card card-bg rounded-xl shadow-md overflow-hidden transition duration-300">
+                <img src="images/screenshot-reply.png" 
+                     alt="Project 1" class="w-full h-auto object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Ai Email Assistant</h3>
+                    <p class="text-gray-300 mb-4">AI Email Assistant is a smart browser extension that generates context-aware email replies with customizable tones. Built with Spring Boot and React + Vite, it integrates seamlessly with Gmail and offers AI-powered suggestions with one-click copy in a clean, responsive UI 🚀!! </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Java</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Springboot</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">React+Vite</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Node.js</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://kvr-10.github.io/AiEmail-Assistant/" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Live Demo</a>
+                        <a href="https://github.com/Kvr-10/AiEmail-Assistant" class="flex-1 border border-primary text-primary hover:bg-blue-900/30 text-center py-2 rounded-lg font-medium transition duration-300">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 (Visible by default) -->
+            <div class="project-card card-bg rounded-xl shadow-md overflow-hidden transition duration-300">
+                <img src="images/dashboard.jpg" 
+                     alt="Project 2" class="w-full h-auto object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Employee Management System</h3>
+                    <p class="text-gray-300 mb-4">Full-Stack Employee Management System built using Spring Boot and React. The backend is developed with Spring Boot, JPA, and MySQL, providing a REST API for employee management. The frontend is built using React (Vite) with Bootstrap for UI styling.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Java</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Springboot</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">React+Vite</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Node.js</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">MySQL</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://kvr-10.github.io/Employee-Management-System/" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Live Demo</a>
+                        <a href="https://github.com/Kvr-10/Employee-Management-System" class="flex-1 border border-primary text-primary hover:bg-blue-900/30 text-center py-2 rounded-lg font-medium transition duration-300">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 (Visible by default) -->
+            <div class="project-card card-bg rounded-xl shadow-md overflow-hidden transition duration-300">
+                <img src="images/main-interface.png" 
+                     alt="Project 3" class="w-full h-auto object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Viznum - See, Sort & Learn Sorting Algorithms</h3>
+                    <p class="text-gray-300 mb-4">Viznum is a Java Swing-based application that visually demonstrates sorting algorithms like Insertion, Quick, Merge, and Bubble Sort through animated steps. It includes built-in audio narration using FreeTTS to explain each algorithm in real time.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Java</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Swing</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">FreeTTS</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/Kvr-10/Sorting-Algorithms/releases/download/v4.0/Viznum_setup.exe" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Download</a>
+                        <a href="https://kvr-10.github.io/Sorting-Algorithms/" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Live Demo</a>
+                        <a href="https://github.com/Kvr-10/Sorting-Algorithms" class="flex-1 border border-primary text-primary hover:bg-blue-900/30 text-center py-2 rounded-lg font-medium transition duration-300">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 4 (Visible by default) -->
+            <div class="project-card card-bg rounded-xl shadow-md overflow-hidden transition duration-300">
+                <img src="images/ums.png"  
+                     alt="Project 4" class="w-full h-auto object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">University Management System</h3>
+                    <p class="text-gray-300 mb-4">University Management System is a Java Swing application that manages student/faculty data, leave requests, exam results, and fees. It uses MySQL with JDBC, and integrates JCalendar and RS2XML for date handling and data export.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Java</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Swing</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">MySQL</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/Kvr-10/University-Management-System/releases/download/v2.0.0/UniversityMS.jar" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Download</a>
+                        <a href="https://kvr-10.github.io/University-Management-System/" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Live Demo</a>
+                        <a href="https://github.com/Kvr-10/University-Management-System" class="flex-1 border border-primary text-primary hover:bg-blue-900/30 text-center py-2 rounded-lg font-medium transition duration-300">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 5 (Hidden by default) -->
+            <div class="project-card card-bg rounded-xl shadow-md overflow-hidden transition duration-300 hidden-project hidden">
+                <img src="images/Breaking_ball.png" 
+                     alt="Project 5" class="w-full h-auto object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Breaking Ball Game</h3>
+                    <p class="text-gray-300 mb-4">A classic Breakout-style game developed in Java. Players control a paddle to bounce a ball and break bricks arranged in a grid. The game features simple controls, a scoring system, and increasing difficulty as players advance. Ideal for learning game development basics and Java graphics programming.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Java</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Swing</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/Kvr-10/Breaking-Ball-Game/releases/download/v3.0/Breaking_ball.jar" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Download</a>
+                        <a href="https://kvr-10.github.io/Breaking-Ball-Game/" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Live Demo</a>
+                        <a href="https://github.com/Kvr-10/Breaking-Ball-Game" class="flex-1 border border-primary text-primary hover:bg-blue-900/30 text-center py-2 rounded-lg font-medium transition duration-300">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 6 (Hidden by default) -->
+            <div class="project-card card-bg rounded-xl shadow-md overflow-hidden transition duration-300 hidden-project hidden">
+                <img src="images/Quiz interface.png"  
+                alt="Project 6" class="w-full h-auto object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Quiz Application</h3>
+                    <p class="text-gray-300 mb-4">The Quiz Application is designed to provide a challenging and engaging way to test your knowledge across various topics. It features a user-friendly interface, understanding the rules, multiple-choice questions, and viewing your score. The application ensures that each player's experience is fresh by resetting the game state between sessions.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Java</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-primary text-sm rounded-full">Swing</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/Kvr-10/Quiz-Application/releases/download/v1.0.1/QuizApplication.jar" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Download</a>
+                        <a href="https://kvr-10.github.io/Quiz-Application/" class="flex-1 bg-primary hover:bg-secondary text-white text-center py-2 rounded-lg font-medium transition duration-300">Live Demo</a>
+                        <a href="https://github.com/Kvr-10/Quiz-Application" class="flex-1 border border-primary text-primary hover:bg-blue-900/30 text-center py-2 rounded-lg font-medium transition duration-300">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Show All Projects Button -->
+        <div class="text-center mt-10">
+            <button id="show-all-projects" class="bg-primary hover:bg-secondary text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                Show All Projects
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Show All Projects functionality
+    document.getElementById('show-all-projects').addEventListener('click', function(event) {
+        // Prevent the default behavior of updating the URL hash
+        event.preventDefault();
+        
+        // Show all hidden projects
+        const hiddenProjects = document.querySelectorAll('.hidden-project');
+        hiddenProjects.forEach(project => {
+            project.classList.remove('hidden');
+        });
+        
+        // Hide the "Show All Projects" button
+        this.style.display = 'none';
+    });
 </script>
 
-</head>
-<body>
-    <div id="particles-js"></div>
-    <div class="container">
-        <header class="header">
-            <h1>Chaman Sinha</h1>
-            <div id="typed-text" class="typed-text"></div>
-        </header>
-        <nav>
-            <a href="#about">About Me</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <section class="profile-section">
-            <div class="profile-picture-container">
-                <img src="myphoto.jpg" alt="Profile Picture" class="profile-picture">
-            </div>
-        </section>
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <p>Hi I'm Chaman Sinha, a third-year Computer Engineering student with an aggregated CGPA of 8.99, passionate about Java development and technology. I am skilled in various programming languages and tools, and I am continuously improving my technical expertise through projects and certifications.</p>
-            <p>Currently, I am focusing on enhancing my skills in Java, MySQL, the Spring Boot framework, and web development, while also pursuing certifications to further validate my knowledge. My academic journey and hands-on experience in various projects have equipped me with a strong foundation in software development, and I am eager to contribute to meaningful projects and opportunities.</p>
-        
-            <h3>Skills and Expertise</h3>
-            <ul>
-                <li><strong>Programming Languages:</strong> Java, C++</li>
-                <li><strong>Web Technologies:</strong> HTML, CSS</li>
-                <li><strong>Database Management:</strong> MySQL</li>
-                <li><strong>Version Control:</strong> Git</li>
-                <li><strong>Framework:</strong> Spring Boot, React.js</li>
-                <li><strong>IDE:</strong> VSCode, IntelliJ IDEA</li>
-                <li><strong>Soft Skills:</strong> Problem-solving, Analytical thinking, Team collaboration</li>
-            </ul>
 
-            <div class="resume-download">
-                <a href="Chaman_Sinha_Resume.pdf" download="Chaman_Sinha_Resume.pdf" class="button">Download Resume</a>
-            </div>
-        </section>
-        </section>
-   
-        <section id="projects" class="projects">
-            <h2>Projects</h2>
-            <div class="project-card">
-                <img src="ai-email-assistant.png" alt="AI Email Assistant">
-                <div class="details">
-                    <h3>AI Email Assistant</h3>
-                    <p>Full-stack AI-powered email reply generator with Google Mail extension integration, built with Spring Boot backend and React + Vite frontend.</p>
-                    <a href="https://kvr-10.github.io/AiEmail-Assistant/" target="_blank" class="button">View Project</a>
-                    <a href="https://www.youtube.com/watch?v=GhceCjThWqo" target="_blank" class="button">Watch Demo</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="employee-management.png" alt="Employee Management System">
-                <div class="details">
-                    <h3>Employee Management System</h3>
-                    <p>Full-Stack application built using Spring Boot (Java) for backend with JPA and MySQL, and React (Vite) with Bootstrap for frontend.</p>
-                    <a href="https://kvr-10.github.io/Employee-Management-System/" target="_blank" class="button">View Project</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="ums-project.png" alt="University Management System">
-                <div class="details">
-                    <h3>University Management System</h3>
-                    <p>Java-based application with GUI using Swing and database integration with MySQL.</p>
-                    <a href="https://kvr-10.github.io/University-Management-System/" target="_blank" class="button">View Project</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="quiz-app.png" alt="Quiz Application">
-                <div class="details">
-                    <h3>Quiz Application</h3>
-                    <p>Java-based quiz application with features for login, quiz participation, and score display.</p>
-                    <a href="https://kvr-10.github.io/Quiz-Application/" target="_blank" class="button">View Project</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="breaking-ball.png" alt="Breaking Ball Game">
-                <div class="details">
-                    <h3>Breaking Ball Game</h3>
-                    <p>Java-based Breakout-style game with scoring system and increasing difficulty.</p>
-                    <a href="https://kvr-10.github.io/Breaking-Ball-Game/" target="_blank" class="button">View Project</a>
-                </div>
-            </div>
-            <div class="project-card">
-                <img src="sorting.ico" alt="Sorting Algorithms">
-                <div class="details">
-                    <h3>Sorting Algorithms</h3>
-                    <p>A Java-based project that visualizes various sorting algorithms using Java Swing,<br> showing how data is ordered step-by-step with smooth animations.</p>
-                    <a href="https://kvr-10.github.io/Sorting-Algorithms/" class="button" onclick="showMessage(event)">View Project</a>
-                </div>
-            </div>
-        </section>
-        <section id="contact" class="contact">
-            <h2>Contact</h2>
-            <p>You can reach me at the following:</p>
-            <div class="social-icons">
-                <a href="mailto:Chamansinha9480@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/chaman-sinha" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/kvr-10" target="_blank" rel="noopener noreferrer" class="social-icon"><i class="fab fa-github"></i></a>
-            </div>
-        </section>
-        <footer class="footer">
-            <p>&copy; 2024 Chaman Sinha</p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 section-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-white mb-4">Get In <span class="gradient-text">Touch</span></h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Feel free to contact me for any questions or opportunities</p>
             
-        </footer>
-    </div>
-    <script src="script.js"></script>
-    <script>
-        
-        var options = {
-    strings: [
-        "Java Developer", 
-        "Web Developer", 
-        "Game Developer", 
-        "Desktop App Developer", 
-        "Web App Developer"
-    ],
-    typeSpeed: 75,
-    backSpeed: 25,
-    backDelay: 1000,
-    startDelay: 500,
-    loop: true,
-    showCursor: false,
-    cursorChar: '|', 
-};
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="w-full">
+                    <div class="card-bg p-8 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold text-white mb-6">Send Me a Message</h3>
+                        <form action="https://formsubmit.co/chamansinha9480@gmail.com" method="POST">
+                            <!-- FormSubmit configuration -->
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_subject" value="New message from portfolio visitor!">
+                             <input type="hidden" name="_next" value="https://kvr-10.github.io/thank-you.html">
 
-var typed = new Typed('#typed-text', options);
-    </script>
-    
+                            <div class="mb-6">
+                                <label for="name" class="block text-gray-300 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white"
+                                    placeholder="Enter your name">
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="email" class="block text-gray-300 font-medium mb-2">Your Email</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white"
+                                    placeholder="Enter your email">
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="subject" class="block text-gray-300 font-medium mb-2">Subject</label>
+                                <input type="text" id="subject" name="_subject"
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white"
+                                    placeholder="Enter subject">
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-300 font-medium mb-2">Your Message</label>
+                                <textarea id="message" name="message" required rows="5"
+                                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-white"
+                                    placeholder="Enter your message"></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-primary hover:bg-secondary text-white py-3 px-6 rounded-lg font-medium transition duration-300">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-semibold text-white mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-primary p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-300">Email</h4>
+                                <p class="text-gray-400">chamansinha9480@gmail.com</p>
+                            </div>
+                        </div>
+                  
+                        <div class="flex items-start">
+                            <div class="bg-primary p-3 rounded-full mr-4">
+                                <i class="fab fa-linkedin-in text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-300">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/chaman-sinha" target="_blank" class="text-gray-400 hover:underline">
+                                    linkedin.com/in/chaman-sinha
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-primary p-3 rounded-full mr-4">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-300">Location</h4>
+                                <p class="text-gray-400">Pune, Maharashtra</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-white mt-12 mb-6">Connect With Me</h3>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/chaman-sinha" class="bg-gray-800 hover:bg-primary hover:text-white w-12 h-12 rounded-full flex items-center justify-center text-primary transition duration-300">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                     <a href="https://github.com/Kvr-10"
+                        class="bg-gray-800 hover:bg-primary hover:text-white w-12 h-12 rounded-full flex items-center justify-center text-primary transition duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/Chamansinha/"
+                   class="bg-gray-800 hover:bg-primary hover:text-white w-12 h-12 rounded-full flex items-center justify-center text-primary transition duration-300"
+                        aria-label="LeetCode">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 fill-current text-primary" viewBox="0 0 24 24">
+                        <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                        </svg>
+                    </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-xl font-bold text-white">Chaman <span class="text-primary">Sinha</span></span>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="mb-2">©Chaman Sinha. All rights reserved.</p>
+                    <p class="text-gray-500"></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
         
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Active navigation link highlight
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
